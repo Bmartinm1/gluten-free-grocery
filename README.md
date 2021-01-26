@@ -1,5 +1,11 @@
 ## Gluten Free Grocery
 
+[] App name and a brief description of the project
+[x] A list of authors
+[] Heroku link to the deployed site
+[] A list of features included in the site
+[] An outline of the technologies in the project
+
 Authors: Meaghan Provencher, Rich May, Mike Collins, and Ben MartinMooney
 
 Site will provide a platform for users to search through gluten free products with associated reviews and the locations where said product(s) can be purchased.
