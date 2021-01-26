@@ -47,7 +47,6 @@ const SignInForm = () => {
           throw new Error(errorMessage);
         } 
         
-        const userData = await response.json()
         setShouldRedirect(true)
       }
     } catch (error) {
