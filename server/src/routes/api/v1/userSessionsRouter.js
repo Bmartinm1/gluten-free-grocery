@@ -15,7 +15,6 @@ sessionRouter.post("/", (req, res, next) => {
         return res.status(201).json(user);
       });
     }
-
     return res.status(401).json(undefined);
   })(req, res, next);
 });
