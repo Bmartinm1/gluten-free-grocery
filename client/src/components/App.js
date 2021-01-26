@@ -10,7 +10,7 @@ import TopBar from "./layout/TopBar";
 import CategoryIndex from './CategoryIndex';
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(undefined);
 
   const fetchCurrentUser = async () => {
     try {
