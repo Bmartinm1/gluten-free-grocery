@@ -1,7 +1,17 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-// place global css here
+
+.category-tile {
+  color: black;
+  padding: 20px;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: rgb(208, 253, 214);
+  box-shadow: 5px 3px rgb(109, 109, 109);
+}
+
 *,
 *::before,
 *::after {

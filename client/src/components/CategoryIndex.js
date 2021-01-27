@@ -35,9 +35,11 @@ const CategoryIndex = props => {
   })
 
   return (
-    <div>
-      <h1>Category Index Page</h1>
-      {categoryTiles}
+    <div className='grid-container text-center'>
+      <h1>Gluten Free Categories</h1>
+      <div className="grid-x grid-margin-x">
+        {categoryTiles}
+      </div>
     </div>
   )
 }
