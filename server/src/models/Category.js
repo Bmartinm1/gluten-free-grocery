@@ -23,8 +23,8 @@ class Category extends Model {
             relation: Model.BelongsToOneRelation,
             modelClass: Product,
             join: {
-                from: "categories.productId",
-                to: "products.id"
+                from: "categories.id",
+                to: "products.categoryId"
             } 
         }
     }

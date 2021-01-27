@@ -1,6 +1,6 @@
-import react, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const productShow = props => {
+const ProductShow = props => {
     const [product, setProduct] = useState({
         id: '',
         brandName: '',
@@ -11,18 +11,20 @@ const productShow = props => {
     const [errors, SetErrors] = useState([])
 
     const getProduct = async () => {
+        const productId = props.match.params.id
+        //debugger
         try {
-            debugger
-            let productId = props.match.params.id
-            const response = fetch(`/api/v1/products/${productId}`)
+            const response = await fetch(`/api/v1/products/${productId}`)
+            //debugger
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw (error)
+                throw new Error(errorMessage)
             }
             const body = await response.json()
             setProduct(body.product)
+            debugger
         } catch (error) {
+            console.log(error)
             console.error(`Error in fetch ${error.message}`)
         }
     }
@@ -33,11 +35,12 @@ const productShow = props => {
 
     return (
         <div className="product-show">
-            <h2>product.productName</h2>
-            <p>product.description</p>
+            <h1>fuck you, from react</h1>
+            <h2>{product.productName}</h2>
+            <p>{product.description}</p>
         </div>
     )
 }
 
 
-export default productShow
+export default ProductShow

@@ -37,7 +37,7 @@ const CategoryIndex = props => {
   return (
     <div>
       <h1>Category Index Page</h1>
-      {categoryTiles }
+      {categoryTiles}
     </div>
   )
 }
