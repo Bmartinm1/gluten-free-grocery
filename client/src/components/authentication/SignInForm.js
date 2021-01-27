@@ -31,7 +31,7 @@ const SignInForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    // validateInput(userPayload);
+    validateInput(userPayload);
     try {
       if (Object.keys(errors).length === 0) {
         const response = await fetch("/api/v1/user-sessions", {
@@ -47,7 +47,6 @@ const SignInForm = () => {
           throw new Error(errorMessage);
         } 
         
-        const userData = await response.json()
         setShouldRedirect(true)
       }
     } catch (error) {

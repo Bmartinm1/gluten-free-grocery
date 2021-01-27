@@ -11,7 +11,7 @@ import CategoryIndex from './CategoryIndex';
 import ProductList from './ProductList'
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(undefined);
 
   const fetchCurrentUser = async () => {
     try {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+
 import CategoryTile from './CategoryTile'
+
 const CategoryIndex = props => {
   const [categories, setCategories] = useState([])
 
