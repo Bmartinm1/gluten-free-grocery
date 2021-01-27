@@ -3,5 +3,9 @@
     "activityBar.background": "#043515",
     "titleBar.activeBackground": "#064B1E",
     "titleBar.activeForeground": "#F0FEF5"
-  }
+  },
+  "extensions.ignoreRecommendations": true,
+  "files.autoSave": "off",
+  "typescript.tsc.autoDetect": "off",
+  "npm.autoDetect": "off"
 }

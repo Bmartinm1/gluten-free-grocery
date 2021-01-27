@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+
 import CategoryTile from './CategoryTile'
+
 const CategoryIndex = props => {
   const [categories, setCategories] = useState([])
 
@@ -25,9 +27,9 @@ const CategoryIndex = props => {
 
   const categoryTiles = categories.map(categoryObject => {
     return (
-      <CategoryTile 
-        key={categoryObject.id}
-        category={categoryObject.name}
+      <CategoryTile
+        key={ categoryObject.id }
+        category={ categoryObject.name }
       />
     )
   })
@@ -35,7 +37,7 @@ const CategoryIndex = props => {
   return (
     <div>
       <h1>Category Index Page</h1>
-      {categoryTiles}
+      {categoryTiles }
     </div>
   )
 }

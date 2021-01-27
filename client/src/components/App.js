@@ -17,7 +17,7 @@ const App = (props) => {
     try {
       const user = await getCurrentUser()
       setCurrentUser(user)
-    } catch(err) {
+    } catch (err) {
       setCurrentUser(null)
     }
   }
@@ -27,12 +27,13 @@ const App = (props) => {
   }, []);
   return (
     <Router>
-      <TopBar user={currentUser} />
+      <TopBar user={ currentUser } />
       <Switch>
-        <Route exact path="/" component={CategoryIndex} />
-        <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
-        <Route exact path="/:categoryId" component={CategoryShow} />
+        <Route exact path="/" component={ CategoryIndex } />
+        <Route exact path="/users/new" component={ RegistrationForm } />
+        <Route exact path="/user-sessions/new" component={ SignInForm } />
+        {/* <Route exact path="/:categoryId" component={ CategoryShow } /> */ }
+        {/* <Route exact path="/categories/:categoryId/:productId" component={ ProductShow } /> */ }
       </Switch>
     </Router>
   );
