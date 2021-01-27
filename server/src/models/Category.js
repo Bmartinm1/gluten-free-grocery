@@ -16,15 +16,15 @@ class Category extends Model {
   }
 
   static get relationMappings() {
-    const Product = require('./Product')
+    const Product = require('./Product.js')
 
     return {
-        product: {
+        products: {
             relation: Model.BelongsToOneRelation,
             modelClass: Product,
             join: {
-                from: "categories.productId",
-                to: "products.id"
+                from: "categories.id",
+                to: "products.categoryId"
             } 
         }
     }

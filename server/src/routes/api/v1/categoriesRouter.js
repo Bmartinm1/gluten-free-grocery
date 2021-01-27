@@ -19,4 +19,18 @@ categoriesRouter.get('/', async (req, res) => {
   }
 })
 
+categoriesRouter.get("/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId
+    console.log(req.params)
+    const category = await Category.query().findById(categoryId)
+    category.products = await category.$relatedQuery("products")
+    console.log(category)
+    return res.status(200).json({ category: category })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+
+  }
+})
+
 export default categoriesRouter

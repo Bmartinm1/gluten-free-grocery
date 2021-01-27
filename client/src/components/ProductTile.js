@@ -3,9 +3,8 @@ import React from 'react'
 const ProductTile = ({product}) => {
   return (
     <div>
-      <ul>
-        {product}
-      </ul>
+      <h4>{product.brandName}, {product.productName}</h4>
+      <p>{product.description}</p>
     </div>
   )
 }
