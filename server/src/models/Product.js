@@ -23,7 +23,7 @@ class Product extends Model {
 
       return {
           category: {
-              relation: Model.HasManyRelation,
+              relation: Model.BelongsToOneRelation,
               modelClass: Category,
               join: {
                   from: "products.categoryId",
