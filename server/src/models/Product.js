@@ -8,7 +8,7 @@ class Product extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['brandName', 'productName'],
+      required: ['brandName', 'productName', 'categoryId'],
       properties: {
         productName: {type: 'string'},
         brandName: {type: 'string'},
