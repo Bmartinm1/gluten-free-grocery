@@ -3,9 +3,11 @@ import React from 'react'
 
 const CategoryTile = ({category}) => {
   return (
-    <h4>
-      {category}
-   </h4>
+    <div className="category-tile cell small-6">
+      <h4>
+        {category}
+      </h4>
+    </div>
   )
 }
 
