@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
 
 import CategoryTile from './CategoryTile'
 
@@ -28,13 +27,10 @@ const CategoryIndex = props => {
 
   const categoryTiles = categories.map(categoryObject => {
     return (
-      <div key={categoryObject.id}>
-        <Link to={`/${categoryObject.id}`}>
-          <CategoryTile 
-            category={categoryObject.name}
-          />
-        </Link>
-      </div>
+      <CategoryTile
+        key={categoryObject.id} 
+        category={categoryObject}
+      />
     )
   })
 
