@@ -20,7 +20,7 @@ categoriesRouter.get('/', async (req, res) => {
   }
 })
 
-categoriesRouter.get("/:categoryId", async (req, res) => {
+categoriesRouter.get('/:categoryId', async (req, res) => {
   try {
     const categoryId = req.params.categoryId
     const category = await Category.query().findById(categoryId)
