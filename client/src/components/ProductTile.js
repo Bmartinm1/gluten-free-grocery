@@ -5,8 +5,8 @@ const ProductTile = ({product}) => {
   return (
     <div>
       <Link to={`/products/${product.id}`}>
-      <h4>{product.brandName}, {product.productName}</h4>
-      <p>{product.description}</p>
+        <h4>{product.brandName}, {product.productName}</h4>
+        <p>{product.description}</p>
       </Link>
     </div>
   )
