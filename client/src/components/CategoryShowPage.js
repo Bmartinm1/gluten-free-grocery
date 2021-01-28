@@ -7,11 +7,11 @@ const CategoryShowPage = props => {
     name: "",
     products: []
   })
-  const categoryId = props.match.params.categoryId
+  const categoryId = props.match.params.id
 
   const getCategory = async () => {
     try {
-      const response = await fetch(`api/v1/categories/${categoryId}`)
+      const response = await fetch(`/api/v1/categories/${categoryId}`)
         if (!response.ok) {
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
