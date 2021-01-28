@@ -28,8 +28,8 @@ const CategoryIndex = props => {
   const categoryTiles = categories.map(categoryObject => {
     return (
       <CategoryTile
-        key={categoryObject.id} 
-        category={categoryObject}
+        key={ categoryObject.id }
+        category={ categoryObject }
       />
     )
   })
