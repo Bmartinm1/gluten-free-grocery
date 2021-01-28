@@ -16,11 +16,11 @@ class Category extends Model {
   }
 
   static get relationMappings() {
-    const Product = require('./Product')
+    const Product = require('./Product.js')
 
     return {
-        product: {
-            relation: Model.BelongsToOneRelation,
+        products: {
+            relation: Model.HasManyRelation,
             modelClass: Product,
             join: {
                 from: "categories.id",

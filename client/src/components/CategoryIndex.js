@@ -29,7 +29,7 @@ const CategoryIndex = props => {
     return (
       <CategoryTile
         key={ categoryObject.id }
-        category={ categoryObject.name }
+        category={ categoryObject }
       />
     )
   })
