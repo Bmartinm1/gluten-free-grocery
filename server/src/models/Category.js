@@ -14,6 +14,22 @@ class Category extends Model {
       }
     }
   }
+
+  static get relationMappings() {
+    const Product = require('./Product.js')
+
+    return {
+        products: {
+            relation: Model.HasManyRelation,
+            modelClass: Product,
+            join: {
+                from: "categories.id",
+                to: "products.categoryId"
+            } 
+        }
+    }
+}
+
 }
 
 module.exports = Category

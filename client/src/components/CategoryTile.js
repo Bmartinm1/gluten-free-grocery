@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 const CategoryTile = ({category}) => {
   return (
-    <div className="category-tile cell small-6">
-      <h4>
-        {category}
-      </h4>
-    </div>
+    <Link to={`/${category.id}`}>
+      <div className="category-tile cell small-6">
+        <h4>
+          {category.name}
+        </h4>
+      </div>
+    </Link>
   )
 }
 
