@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const ProductShow = props => {
-  const [product, setProduct] = useState({
-    id: '',
-    brandName: '',
-    productName: '',
-    description: ''
-  })
+  const [product, setProduct] = useState({})
 
   const getProduct = async () => {
     const productId = props.match.params.id
