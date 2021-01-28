@@ -2,18 +2,18 @@ import express from 'express'
 import objection from 'objection'
 const { ValidationError } = objection
 
-import { Product } from '../../../models/Product.js'
+import { Product } from '../../../models/index.js'
 import cleanUserInput from '../../../services/cleanUserInput.js'
 
 const newProductRouter = new express.Router()
 
-newProductRouter.get('/', async (req, res) => {
-  try {
-    const 
-  } catch(errors) {
+// newProductRouter.get('/', async (req, res) => {
+//   try {
+//     const 
+//   } catch(errors) {
 
-  }
-})
+//   }
+// })
 
 newProductRouter.post('/new', async (req, res) => {
   const { body } = req
