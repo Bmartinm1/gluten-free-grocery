@@ -1,29 +1,18 @@
 import React from 'react'
 
 const ReviewTile = ({ review }) => {
-  let reviewBody
-  if(review.title && review.content){
-    reviewBody = 
-    <div>
-      <h5> {review.title} rating: {review.rating}</h5>
-      <p> {review.content} </p>
-    </div>
-  } else if(review.content){
-    reviewBody = 
-    <div>
-      <h5>Review rating: {review.rating}</h5>
-      <p> {review.content} </p>
-    </div>
-  } else if(review.title){
-    reviewBody =
-    <h5> {review.title} rating: {review.rating}</h5>
-  } else {
-    reviewBody =
-    <h5> rating: {review.rating}</h5>
-  }
+
   return(
-    <div>
-      {reviewBody}
+    <div className="callout">
+      <div className="grid-x">
+        <h5 className="cell small-6">
+          {review.title || 'Untitled'}
+        </h5>
+        <p className="cell small-6 text-right">
+          Rating: {review.rating}
+        </p>
+      </div>
+      <p>{review.content}</p>
     </div>
   )
 }

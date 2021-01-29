@@ -10,7 +10,6 @@ import TopBar from "./layout/TopBar";
 import CategoryIndex from './CategoryIndex';
 import ProductShow from './ProductShow';
 import CategoryShowPage from "./CategoryShowPage";
-import ReviewList from './ReviewList.js';
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -36,7 +35,6 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={ SignInForm } />
         <Route exact path="/products/:id" component={ ProductShow } />
         <Route exact path="/categories/:id" component={CategoryShowPage} />
-        <Route exact path="/reviews" component={ReviewList} />
       </Switch>
     </Router>
   );

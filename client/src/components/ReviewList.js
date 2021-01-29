@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import ReviewTile from './ReviewTile'
 
-const ReviewList = (props) => {
+const ReviewList = ({productId}) => {
   const [reviews, setReviews] = useState([])
 
   const getReviews = async () => {
-    // get productId from props.match.params.productId
     try {
-      const response = await fetch('/api/v1/reviews') //set up end point
+      const response = await fetch(`/api/v1/products/${productId}/reviews`)
       if (!response.ok){
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
@@ -33,7 +32,8 @@ const ReviewList = (props) => {
   }) 
 
   return(
-    <div>
+    <div className="callout">
+      <h3>Reviews</h3>
       {reviewTiles}
     </div>
   )

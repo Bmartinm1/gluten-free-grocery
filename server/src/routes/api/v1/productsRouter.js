@@ -2,6 +2,7 @@ import express from 'express'
 
 import { Product } from '../../../models/index.js'
 import ProductSerializer from '../../../serializers/ProductSerializer.js'
+import productReviewsRouter from './productReviewsRouter.js'
 
 const productsRouter = new express.Router()
 
@@ -15,5 +16,7 @@ productsRouter.get('/:id', async (req, res) => {
     return res.status(500).json({ errors })
   }
 })
+
+productsRouter.use('/:id/reviews', productReviewsRouter)
 
 export default productsRouter

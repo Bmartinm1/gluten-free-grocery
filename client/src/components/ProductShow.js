@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
+import ReviewList from './ReviewList'
+
 const ProductShow = props => {
   const [product, setProduct] = useState({})
+  const productId = props.match.params.id
 
   const getProduct = async () => {
-    const productId = props.match.params.id
     try {
       const response = await fetch(`/api/v1/products/${productId}`)
 
@@ -24,9 +26,14 @@ const ProductShow = props => {
   }, [])
 
   return (
-    <div className="product-show">
-      <h2>{product.brandName} {product.productName}</h2>
-      <p>{product.description}</p>
+    <div className= "grid-container">
+      <div className="product-show text-center">
+        <h2>{product.brandName} {product.productName}</h2>
+        <p>{product.description}</p>
+      </div>
+      <ReviewList 
+        productId={productId}
+      />
     </div>
   )
 }
