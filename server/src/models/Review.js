@@ -9,7 +9,7 @@ class Review extends Model {
   static get jsonSchema(){
     return {
       type: 'object',
-      required: ['rating', 'userId', 'productId'],
+      required: ['rating'],
       properties: {
         rating: {
           type: ['integer', 'string'],
@@ -25,12 +25,6 @@ class Review extends Model {
           type: 'string',
           minLength: 1,
           maxLength: 1000
-        },
-        userId: {
-          type: ['integer', 'string']
-        },
-        productId: {
-          type: ['integer', 'string']
         }
       }
     }

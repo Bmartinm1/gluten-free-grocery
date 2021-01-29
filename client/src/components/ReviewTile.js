@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ReviewTile = ({ review }) => {
-
   return(
     <div className="callout">
       <div className="grid-x">

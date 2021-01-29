@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ReviewList from './ReviewList'
 
 const ProductShow = props => {
-  const [product, setProduct] = useState({})
+  const [product, setProduct] = useState({reviews: []})
   const productId = props.match.params.id
 
   const getProduct = async () => {
@@ -32,7 +32,7 @@ const ProductShow = props => {
         <p>{product.description}</p>
       </div>
       <ReviewList 
-        productId={productId}
+        reviews={product.reviews}
       />
     </div>
   )
