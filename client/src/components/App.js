@@ -27,6 +27,7 @@ const App = (props) => {
   useEffect(() => {
     fetchCurrentUser()
   }, []);
+  
   return (
     <Router>
       <TopBar user={ currentUser } />
@@ -36,7 +37,7 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={ SignInForm } />
         <Route exact path="/products/:id" component={ ProductShow } />
         <Route exact path="/categories/:id" component={CategoryShowPage} />
-        <Route exact path="/products/new" component={NewProductForm} />
+        <Route exact path="/categories/:categoryId/products/new" component={NewProductForm} />
       </Switch>
     </Router>
   );
