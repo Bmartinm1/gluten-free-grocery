@@ -20,9 +20,10 @@ const newProductForm = props => {
     })
   }
 
-  const addProduct = async () => {
+  const addProduct = async (newProduct) => {
+    const categoryId = props.match.params.categoryId
     try {
-      const response = await fetch('api/v1/Products', {
+      const response = await fetch(`api/v1/categories/${categoryId}`, {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json'
@@ -50,6 +51,7 @@ const newProductForm = props => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    debugger
     addProduct()
     clearForm()
   }
@@ -64,9 +66,9 @@ const newProductForm = props => {
   }
 
   return (
-    <div className="newProductForm">
+    <>
       <h1>Submit a new product for approval here</h1>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit} className="new-product-form" >
         <ErrorList errors={errors} />
 
         <label>
@@ -103,7 +105,7 @@ const newProductForm = props => {
           <input className="button" type="submit" value="Submit" />
         </div>
       </form>
-    </div>
+    </>
   )
 }
 

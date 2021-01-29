@@ -1,6 +1,7 @@
 import express from 'express'
 
 import {Category} from '../../../models/index.js'
+import categoryProductsRouter from './categoryProductsRouter.js'
 import CategorySerializer from '../../../serializers/CategorySerializer.js'
 
 const categoriesRouter = new express.Router()
@@ -27,5 +28,7 @@ categoriesRouter.get('/:categoryId', async (req, res) => {
     return res.status(500).json({ errors: error })
   }
 })
+
+categoryProductsRouter.use("/:categoryId/products", categoryProductsRouter)
 
 export default categoriesRouter
