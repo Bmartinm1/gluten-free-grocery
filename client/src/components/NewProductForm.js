@@ -66,7 +66,7 @@ const NewProductForm = props => {
   }
   
   if (shouldRedirect) {
-    return <Redirect to = {`/categories/${categoryId}`} />
+    return <Redirect to={`/categories/${categoryId}`} />
   }
   
   return (
