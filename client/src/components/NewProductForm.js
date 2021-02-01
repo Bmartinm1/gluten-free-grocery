@@ -43,7 +43,6 @@ const NewProductForm = props => {
         }
       } else {
         const body = await response.json()
-        console.log(body)
         setShouldRedirect(true)
       }
     } catch ( error ) {
