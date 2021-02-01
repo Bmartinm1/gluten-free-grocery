@@ -1,5 +1,7 @@
+import ReviewSerializer from './ReviewSerializer.js'
+
 class ProductSerializer {
-  static getSummary(product) {
+  static async getDetails(product) {
     const allowedAttributes = ['id', 'productName', 'brandName', 'description', 'categoryId']
     const serializedProduct = {}
 
@@ -7,6 +9,10 @@ class ProductSerializer {
       serializedProduct[attribute] = product[attribute]
     }
 
+    serializedProduct.reviews = await product.$relatedQuery('reviews')
+    serializedProduct.reviews = serializedProduct.reviews.map(review => {
+      return ReviewSerializer.getSummary(review)
+    })
     return serializedProduct
   }
 }

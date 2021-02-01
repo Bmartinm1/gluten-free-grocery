@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Bcrypt = require("bcrypt");
 const unique = require("objection-unique");
+const { useLimitInFirst } = require("./Model");
 const Model = require("./Model");
 
 const saltRounds = 10;
@@ -43,6 +44,21 @@ class User extends uniqueFunc(Model) {
     }
 
     return serializedJson;
+  }
+
+  static get relationMappings() {
+    const { Review } = require('./index')
+
+    return {
+      reviews: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: 'users.id',
+          to: 'reviews.userId'
+        }
+      }
+    }
   }
 }
 

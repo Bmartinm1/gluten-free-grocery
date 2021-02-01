@@ -10,7 +10,7 @@ rootRouter.use("/", clientRouter);
 
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
 rootRouter.use("/api/v1/users", usersRouter);
-rootRouter.use('/api/v1/categories', categoriesRouter);
-rootRouter.use('/api/v1/products', productsRouter)
+rootRouter.use("/api/v1/categories", categoriesRouter);
+rootRouter.use("/api/v1/products", productsRouter);
 
 export default rootRouter;
