@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { hot } from 'react-hot-loader/root'
+import { Redirect } from 'react-router-dom'
 
 import ErrorList from './ErrorList'
 import translateServerErrors from '../services/translateServerErrors'
@@ -11,6 +12,8 @@ const newProductForm = props => {
     description: ''
   })
 
+  const categoryId = props.match.params.categoryId
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const [errors, setErrors] = useState({})
 
   const handleInputChange = (event) => {
@@ -21,9 +24,8 @@ const newProductForm = props => {
   }
 
   const addProduct = async (newProduct) => {
-    const categoryId = props.match.params.categoryId
     try {
-      const response = await fetch(`api/v1/categories/${categoryId}`, {
+      const response = await fetch(`/api/v1/categories/${categoryId}/products`, {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json'
@@ -31,7 +33,7 @@ const newProductForm = props => {
         body: JSON.stringify(newProduct)
       })
       if (!response.ok) {
-        if(response.status == 422) {
+        if(response.status === 422) {
           const body = await response.json()
           const newErrors = translateServerErrors(body.errors)
           return setErrors(newErrors)
@@ -42,18 +44,11 @@ const newProductForm = props => {
       } else {
         const body = await response.json()
         console.log(body)
-        clearForm()
+        setShouldRedirect(true)
       }
     } catch ( error ) {
       console.error(`Error in fetch: ${error.message}`)
     }
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    debugger
-    addProduct()
-    clearForm()
   }
 
   const clearForm = () => {
@@ -64,7 +59,17 @@ const newProductForm = props => {
     })
     setErrors({})
   }
-
+  
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    addProduct(newProduct)
+    clearForm()
+  }
+  
+  if (shouldRedirect) {
+    return <Redirect to = {`/categories/${categoryId}`} />
+  }
+  
   return (
     <>
       <h1>Submit a new product for approval here</h1>
