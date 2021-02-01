@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import ProductTile from "./ProductTile.js"
 
 const CategoryShowPage = props => {
@@ -7,6 +8,7 @@ const CategoryShowPage = props => {
     name: "",
     products: []
   })
+  
   const categoryId = props.match.params.id
 
   const getCategory = async () => {
@@ -36,12 +38,19 @@ const CategoryShowPage = props => {
       />
     )
   })
+
   return (
     <div>
       <h1>{category.name}</h1>
         {productTiles}
+        <Link to={`/categories/${categoryId}/products/new`}>
+          <div>
+            <p>Can't find what you're looking for?</p>
+            <p>Submit a request for a new product here!</p>
+          </div>
+        </Link>
     </div>
   )
- }
+}
 
 export default CategoryShowPage
