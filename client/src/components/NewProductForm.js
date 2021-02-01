@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { hot } from 'react-hot-loader/root'
 import { Redirect } from 'react-router-dom'
 
 import ErrorList from './ErrorList'
@@ -113,5 +112,5 @@ const NewProductForm = props => {
   )
 }
 
-export default hot(newProductForm)
+export default newProductForm
 
