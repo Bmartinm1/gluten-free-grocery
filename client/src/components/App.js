@@ -8,14 +8,9 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import CategoryIndex from './CategoryIndex';
-<<<<<<< HEAD
 import ProductShow from './ProductShow'
 import CategoryShowPage from "./CategoryShowPage"
 import NewProductForm from './NewProductForm'
-=======
-import ProductShow from './ProductShow';
-import CategoryShowPage from "./CategoryShowPage";
->>>>>>> d5cb69059f9e71fa02e9fb9a9050dba4e8a5545f
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
