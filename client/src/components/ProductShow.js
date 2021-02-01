@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import translateServerErrors from '../services/translateServerErrors'
 
+import NewReviewForm from './NewReviewForm'
 import ReviewList from './ReviewList'
 
 const ProductShow = props => {
-  const [product, setProduct] = useState({reviews: []})
+  const [product, setProduct] = useState({})
+  const [reviews, setReviews] = useState([])
   const productId = props.match.params.id
 
   const getProduct = async () => {
@@ -16,8 +19,38 @@ const ProductShow = props => {
       }
       const body = await response.json()
       setProduct(body.product)
+      setReviews(body.product.reviews)
     } catch (error) {
       console.error(`Error in fetch ${error.message}`)
+    }
+  }
+
+  const addReview = async (review) => {
+    try {
+      const response = await fetch(`api/v1/products/${productId}/review`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-type': 'application/json'
+        }),
+        body: JSON.stringify(review)
+      })
+      if(!response.ok) {
+        if(response.status === 422) {
+          const body = await response.json()
+          const errors = translateServerErrors(body.errors)
+          return setErrors(errors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          throw new Error(errorMessage)
+        }
+      }
+      const body = await response.json()
+      setReviews(
+        ...reviews,
+        body.review
+      )
+    } catch(error) {
+
     }
   }
 
@@ -31,8 +64,13 @@ const ProductShow = props => {
         <h2>{product.brandName} {product.productName}</h2>
         <p>{product.description}</p>
       </div>
+
+      <NewReviewForm
+        addReview={addReview} 
+      />
+
       <ReviewList 
-        reviews={product.reviews}
+        reviews={reviews}
       />
     </div>
   )
