@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import ErrorList from './ErrorList'
 import translateServerErrors from '../services/translateServerErrors'
 
-const newProductForm = props => {
+const NewProductForm = props => {
   const [newProduct, setNewProduct] = useState({
     productName: '',
     brandName: '',
