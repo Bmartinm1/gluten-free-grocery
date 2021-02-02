@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 
 import ErrorList from './ErrorList'
@@ -12,6 +12,11 @@ const NewReviewForm = ({ addReview }) => {
   })
 
   const [errors, setErrors] = useState({})
+  const [changes, setChanges] = useState({
+    rating: '',
+    title: '',
+    content: ''
+  })
 
   const handleInputChange = (event) => {
     setNewReview({
@@ -86,3 +91,14 @@ const NewReviewForm = ({ addReview }) => {
 }
 
 export default NewReviewForm
+
+// useEffect(() => {
+//   if (!isAddMode) {
+//       // get user and set form fields
+//       userService.getById(id).then(user => {
+//           const fields = ['title', 'firstName', 'lastName', 'email', 'role'];
+//           fields.forEach(field => setFieldValue(field, user[field], false));
+//           setUser(user);
+//       });
+//   }
+// }, []);
