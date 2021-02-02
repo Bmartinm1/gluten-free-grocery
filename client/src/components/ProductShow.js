@@ -48,10 +48,10 @@ const ProductShow = ({ user }) => {
         }
       } else {
         const body = await response.json()
-        setReviews(
-          [...reviews,
-          body.review]
-        )
+        setReviews([
+          ...reviews,
+          body.review
+        ])
         setErrors({})
         return true
       }
