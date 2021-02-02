@@ -7,13 +7,12 @@ import cleanUserInput from '../../../services/cleanUserInput.js'
 
 const categoryProductsRouter = new express.Router({ mergeParams: true })
 
-categoryProductsRouter.post('/new', async (req, res) => {
+categoryProductsRouter.post('/', async (req, res) => {
   const { body } = req
   const formInput = cleanUserInput(body)
   const categoryId = req.params.categoryId
-
   try {
-    const newProduct = await Product.query().insertAndFetch({ ...formInput, categoryId })
+    const newProduct = await Product.query().insertAndFetch({ ...formInput, categoryId})
     return res.status(201).json({ newProduct })
   } catch(error) {
     if (error instanceof ValidationError) {

@@ -8,6 +8,7 @@ const CategoryShowPage = props => {
     name: "",
     products: []
   })
+  
   const categoryId = props.match.params.id
 
   const getCategory = async () => {
@@ -37,6 +38,7 @@ const CategoryShowPage = props => {
       />
     )
   })
+
   return (
     <div>
       <h1>{category.name}</h1>
@@ -49,6 +51,6 @@ const CategoryShowPage = props => {
         </Link>
     </div>
   )
- }
+}
 
 export default CategoryShowPage
