@@ -1,6 +1,6 @@
 import express from 'express'
 
-import {Category} from '../../../models/index.js'
+import { Category } from '../../../models/index.js'
 import categoryProductsRouter from './categoryProductsRouter.js'
 import CategorySerializer from '../../../serializers/CategorySerializer.js'
 
@@ -18,9 +18,9 @@ categoriesRouter.get('/', async (req, res) => {
   }
 })
 
-categoriesRouter.get('/:categoryId', async (req, res) => {
+categoriesRouter.get('/:id', async (req, res) => {
   try {
-    const categoryId = req.params.categoryId
+    const categoryId = req.params.id
     const category = await Category.query().findById(categoryId)
     const serializedCategory = await CategorySerializer.getDetails(category)
     return res.status(200).json({ category: serializedCategory })
@@ -29,6 +29,6 @@ categoriesRouter.get('/:categoryId', async (req, res) => {
   }
 })
 
-categoryProductsRouter.use("/:categoryId/products", categoryProductsRouter)
+categoriesRouter.use("/:categoryId/products", categoryProductsRouter)
 
 export default categoriesRouter
