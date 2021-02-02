@@ -112,5 +112,5 @@ const NewProductForm = props => {
   )
 }
 
-export default newProductForm
+export default NewProductForm
 
