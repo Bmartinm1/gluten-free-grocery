@@ -61,7 +61,9 @@ const NewProductForm = props => {
   const handleSubmit = (event) => {
     event.preventDefault()
     addProduct(newProduct)
-    clearForm()
+    if (shouldRedirect === true) {
+      clearForm()
+    } 
   }
   
   if (shouldRedirect) {
