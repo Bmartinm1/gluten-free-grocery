@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router'
 import translateServerErrors from '../services/translateServerErrors'
 
 import NewReviewForm from './NewReviewForm'
 import ReviewList from './ReviewList'
 
-const ProductShow = props => {
+const ProductShow = ({ user }) => {
   const [product, setProduct] = useState({})
   const [reviews, setReviews] = useState([])
-  const productId = props.match.params.id
+  const [errors, setErrors] = useState({})
+  const { id } = useParams()
 
   const getProduct = async () => {
     try {
-      const response = await fetch(`/api/v1/products/${productId}`)
+      const response = await fetch(`/api/v1/products/${id}`)
 
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
@@ -27,30 +29,34 @@ const ProductShow = props => {
 
   const addReview = async (review) => {
     try {
-      const response = await fetch(`api/v1/products/${productId}/review`, {
+      const response = await fetch(`/api/v1/products/${id}/reviews`, {
         method: 'POST',
         headers: new Headers({
           'Content-type': 'application/json'
         }),
-        body: JSON.stringify(review)
+        body: JSON.stringify({ ...review, userId: user.id })
       })
       if(!response.ok) {
         if(response.status === 422) {
           const body = await response.json()
           const errors = translateServerErrors(body.errors)
-          return setErrors(errors)
+          setErrors(errors)
+          return false
         } else {
           const errorMessage = `${response.status} (${response.statusText})`
           throw new Error(errorMessage)
         }
+      } else {
+        const body = await response.json()
+        setReviews(
+          [...reviews,
+          body.review]
+        )
+        setErrors({})
+        return true
       }
-      const body = await response.json()
-      setReviews(
-        ...reviews,
-        body.review
-      )
     } catch(error) {
-
+      console.error(`Error in fetch ${error.message}`)
     }
   }
 
@@ -67,6 +73,7 @@ const ProductShow = props => {
 
       <NewReviewForm
         addReview={addReview} 
+        errors={errors}
       />
 
       <ReviewList 

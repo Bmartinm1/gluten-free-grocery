@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
 import { hot } from 'react-hot-loader/root'
+import _ from 'lodash'
 
 import ErrorList from './ErrorList'
-import translateServerErrors from '../services/translateServerErrors'
 
-const NewReviewForm = ({ addReview }) => {
+const NewReviewForm = ({ addReview, errors }) => {
   const [newReview, setNewReview] = useState({
     rating: '',
     title: '',
     content: ''
   })
-
-  const [errors, setErrors] = useState({})
 
   const handleInputChange = (event) => {
     setNewReview({
@@ -20,10 +18,11 @@ const NewReviewForm = ({ addReview }) => {
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    addReview(newReview)
-    clearForm()
+    if(await addReview(newReview)){
+      clearForm()
+    }
   }
 
   const clearForm = () => {
@@ -32,12 +31,11 @@ const NewReviewForm = ({ addReview }) => {
       title: '',
       content: ''
     })
-    setErrors({})
   }
 
   return (
-    <div>
-      <h1>Submit a review, ya filthy animal</h1>
+    <div className='callout'>
+      <h1>Submit Review</h1>
       <form onSubmit={handleSubmit} className='new-review-form'>
         <ErrorList errors={errors} />
 
@@ -70,8 +68,7 @@ const NewReviewForm = ({ addReview }) => {
 
         <label>
           Review:
-          <input
-            type='text'
+          <textarea
             name='content'
             onChange={handleInputChange}
             value={newReview.content}

@@ -8,9 +8,10 @@ import RegistrationForm from './registration/RegistrationForm';
 import SignInForm from './authentication/SignInForm';
 import TopBar from './layout/TopBar';
 import CategoryIndex from './CategoryIndex';
-import ProductShow from './ProductShow'
-import CategoryShowPage from './CategoryShowPage'
-import NewProductForm from './NewProductForm'
+import ProductShow from './ProductShow';
+import CategoryShowPage from './CategoryShowPage';
+import NewProductForm from './NewProductForm';
+import AuthenticatedRoute from './authentication/AuthenticatedRoute';
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,9 +36,9 @@ const App = (props) => {
         <Route exact path='/' component={ CategoryIndex } />
         <Route exact path='/users/new' component={ RegistrationForm } />
         <Route exact path='/user-sessions/new' component={ SignInForm } />
-        <Route exact path='/products/:id' component={ ProductShow } />
-        <Route exact path='/categories/:id' component={CategoryShowPage} />
-        <Route exact path='/categories/:categoryId/products/new' component={NewProductForm} />
+        <AuthenticatedRoute exact path='/products/:id' component={ ProductShow } user={ currentUser }/>
+        <Route exact path='/categories/:id' component={ CategoryShowPage } />
+        <Route exact path='/categories/:categoryId/products/new' component={ NewProductForm } />
       </Switch>
     </Router>
   );
