@@ -32,7 +32,7 @@ const CategoryShowPage = props => {
 
   const productTiles = category.products.map((product) => {
     return (
-      <ProductTile
+      <ProductTile 
         key={product.id}
         product={product}
       />
@@ -40,11 +40,11 @@ const CategoryShowPage = props => {
   })
 
   return (
-    <div>
+    <div className="category-show">
       <h1>{category.name}</h1>
         {productTiles}
         <Link to={`/categories/${categoryId}/products/new`}>
-          <div>
+          <div className="product-form-link">
             <p>Can't find what you're looking for?</p>
             <p>Submit a request for a new product here!</p>
           </div>
