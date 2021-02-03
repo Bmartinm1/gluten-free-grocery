@@ -30,6 +30,7 @@ const CategoryIndex = props => {
       <CategoryTile
         key={ categoryObject.id }
         category={ categoryObject }
+        categoryImg={categoryObject.imgUrl}
       />
     )
   })
@@ -37,7 +38,7 @@ const CategoryIndex = props => {
   return (
     <div className='grid-container text-center' id='category'>
       <h1>Gluten Free Categories</h1>
-      <div className="grid-x grid-margin-x">
+      <div className="grid-x grid-margin-x small-up-2 medium-up-3">
         {categoryTiles}
       </div>
     </div>
