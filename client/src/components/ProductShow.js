@@ -60,6 +60,37 @@ const ProductShow = ({ user }) => {
     }
   }
 
+  const patchReview = async (updatedReview) => {
+    try {
+      const response = await fetch(`/api/v1/products/${id}/reviews`, {
+        method: 'PATCH',
+        headers: new Headers({
+          'content-type': 'application/json'
+        }),
+        body: JSON.stringify(updatedReview)
+      })
+      if(!response.ok) {
+        if(response.status === 422) {
+          const body = await response.json()
+          const errors = translateServerErrors(body.errors)
+          setErrors(errors)
+          return false
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          throw new Error(errorMessage)
+        }
+      } else {
+        const body = await response.json()
+        setReviews(body.reviews)
+        setErrors({})
+        return true
+      }
+
+    } catch (error) {
+      console.error(`Error in fetch ${error.message}`)
+    }
+  }
+
   useEffect(() => {
     getProduct()
   }, [])
@@ -78,6 +109,9 @@ const ProductShow = ({ user }) => {
 
       <ReviewList 
         reviews={reviews}
+        user={user}
+        patchReview={patchReview}
+        errors={errors}
       />
     </div>
   )
