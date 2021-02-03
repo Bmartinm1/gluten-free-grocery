@@ -6,35 +6,35 @@ class CategorySeeder {
     const categoriesData = [
       {
         name: 'Bread & Bakery',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/shutterstock_91804175.jpg'
       },
       {
         name: 'Breakfast & Cereal',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/breakfast.jpg'
       },
       {
         name: 'Canned Goods & Soups',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/cannedfoods.jpg'
       },
       {
         name: 'Condiments/Spices & Baking',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/condiments.jpg'
       },
       {
         name: 'Cookies, Snacks & Candy',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/cookies.jpg'
       },
       {
         name: 'Frozen Foods',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/frozenfoods.jpg'
       },
       {
         name: 'Grains, Pasta & Sides',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/grainspastas.jpg'
       },
       {
         name: 'Miscellaneous',
-        imgUrl: ''
+        imgUrl: 'https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/miscellaneous.jpg'
       }
     ]
 

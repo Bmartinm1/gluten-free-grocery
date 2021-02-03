@@ -8,7 +8,7 @@ class Category extends Model {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: ['name', 'imgUrl'],
+      required: ['name'],
       properties: {
         name: { type: 'string' },
         imgUrl: { type: 'string' }

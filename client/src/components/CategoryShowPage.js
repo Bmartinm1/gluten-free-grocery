@@ -40,13 +40,14 @@ const CategoryShowPage = props => {
   })
 
   return (
-    <div className="category-show">
+    <div className='grid-container text-center' id='category-show' >
       <h1>{category.name}</h1>
         {productTiles}
         <Link to={`/categories/${categoryId}/products/new`}>
           <div className="product-form-link">
-            <p>Can't find what you're looking for?</p>
-            <p>Submit a request for a new product here!</p>
+            <p>Can't find what you're looking for? 
+            Submit a request for a new product here!
+            </p>
           </div>
         </Link>
     </div>
