@@ -1,34 +1,35 @@
 const Model = require('./Model')
 
 class Category extends Model {
-  static get tableName() {
+  static get tableName () {
     return 'categories'
   }
 
-  static get jsonSchema() {
+  static get jsonSchema () {
     return {
       type: 'object',
-      required: ['name'],
+      required: ['name', 'imgUrl'],
       properties: {
-        name: {type: 'string'}
+        name: { type: 'string' },
+        imgUrl: { type: 'string' }
       }
     }
   }
 
-  static get relationMappings() {
+  static get relationMappings () {
     const Product = require('./Product.js')
 
     return {
-        products: {
-            relation: Model.HasManyRelation,
-            modelClass: Product,
-            join: {
-                from: "categories.id",
-                to: "products.categoryId"
-            } 
+      products: {
+        relation: Model.HasManyRelation,
+        modelClass: Product,
+        join: {
+          from: "categories.id",
+          to: "products.categoryId"
         }
+      }
     }
-}
+  }
 
 }
 
