@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { hot } from 'react-hot-loader/root'
-import _ from 'lodash'
 
 import ErrorList from './ErrorList'
 
