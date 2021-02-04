@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import EditingButtons from './EditingButtons'
 import EditReviewForm from './EditReviewForm'
 
-const ReviewTile = ({ review, belongsToUser, patchReview, errors }) => {
+const ReviewTile = ({ review, belongsToUser, patchReview, reviewDelete, errors }) => {
   const [editable, setEditable] = useState(false)
   
   const handleEditClick = (event) => {
@@ -10,10 +10,16 @@ const ReviewTile = ({ review, belongsToUser, patchReview, errors }) => {
     return setEditable(true)
   }
 
+  const handleDeleteClick = (event) => {
+    event.preventDefault()
+    return reviewDelete(review.id)
+  }
+
   let editingButtons; 
   if (belongsToUser) {
     editingButtons = <EditingButtons 
         handleEditClick={handleEditClick} 
+        handleDeleteClick={handleDeleteClick}
       />
   }
 

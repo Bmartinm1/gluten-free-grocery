@@ -1,7 +1,7 @@
 
 class CategorySerializer {
   static getSummary(category) {
-    const allowedAttributes = ['id', 'name', 'imgUrl']
+    const allowedAttributes = ['id', 'name', 'imgUrl', 'backgroundImageUrl']
     const serializedCategory = {}
 
     for (const attribute of allowedAttributes) {
