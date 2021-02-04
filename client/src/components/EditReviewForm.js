@@ -4,15 +4,11 @@ import ErrorList from './ErrorList'
 
 const EditReviewForm = ({ previousReview, patchReview, updateEditable, errors }) => {
   const [review, setReview] = useState({
-    rating: previousReview.rating || '',
+    rating: previousReview.rating,
     title: previousReview.title || '',
     content: previousReview.content || '',
     id: previousReview.id
   })
-
-  const deleteReview = (event) => {
-    
-  }
 
   const handleInputChange = (event) => {
     setReview({
