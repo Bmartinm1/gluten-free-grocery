@@ -10,9 +10,9 @@ class ProductSerializer {
     }
 
     serializedProduct.reviews = await product.$relatedQuery('reviews')
-    serializedProduct.reviews = serializedProduct.reviews.map(review => {
-      return ReviewSerializer.getSummary(review)
-    })
+    serializedProduct.reviews = await Promise.all(serializedProduct.reviews.map(review => {
+      return ReviewSerializer.getDetails(review)
+    }))
     return serializedProduct
   }
 }

@@ -6,13 +6,11 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-  return knex.schema.createTable('reviews', table => {
+  return knex.schema.createTable('votes', (table) => {
     table.bigIncrements('id')
-    table.integer('rating').notNullable()
-    table.string('title')
-    table.string('content', 1000)
+    table.string('voteType').notNullable()
     table.bigInteger('userId').notNullable().unsigned().index().references('users.id')
-    table.bigInteger('productId').notNullable().unsigned().index().references('products.id')
+    table.bigInteger('reviewId').notNullable().unsigned().index().references('reviews.id')
     table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now())
     table.timestamp('updatedAt').notNullable().defaultTo(knex.fn.now())
   })
@@ -22,5 +20,5 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
-  return knex.schema.dropTableIfExists('reviews')
+  return knex.schema.dropTableIfExists('votes')
 }

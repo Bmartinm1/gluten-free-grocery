@@ -25,19 +25,13 @@ class Review extends Model {
           type: 'string',
           minLength: 1,
           maxLength: 1000
-        },
-        upVotes: {
-          type: ['integer', 'string']
-        },
-        downVotes: {
-          type: ['integer', 'string']
         }
       }
     }
   }
 
   static get relationMappings() {
-    const { User, Product } = require('./index.js')
+    const { User, Product, Vote } = require('./index.js')
 
     return {
       user: {
@@ -54,6 +48,26 @@ class Review extends Model {
         join: {
           from: 'reviews.productId',
           to: 'products.id'
+        }
+      },
+      votes: {
+        relation: Model.HasManyRelation,
+        modelClass: Vote,
+        join: {
+          from: 'reviews.id',
+          to: 'votes.reviewId'
+        }
+      },
+      votedUsers: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: 'reviews.id',
+          through: {
+            from: 'votes.reviewId',
+            to: 'votes.userId'
+          },
+          to: 'users.id'
         }
       }
     }

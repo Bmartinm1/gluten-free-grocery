@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import EditingButtons from './EditingButtons'
 import EditReviewForm from './EditReviewForm'
+import VoteButtons from './VoteButtons'
 
-const ReviewTile = ({ review, belongsToUser, patchReview, errors }) => {
+const ReviewTile = ({ review, user, patchReview, errors, addVote }) => {
   const [editable, setEditable] = useState(false)
   
   const handleEditClick = (event) => {
@@ -10,11 +11,19 @@ const ReviewTile = ({ review, belongsToUser, patchReview, errors }) => {
     return setEditable(true)
   }
 
-  let editingButtons; 
-  if (belongsToUser) {
-    editingButtons = <EditingButtons 
+  let buttons; 
+  if (user.id == review.userId) {
+    buttons = <EditingButtons 
         handleEditClick={handleEditClick} 
       />
+  } else {
+    buttons = <VoteButtons 
+      reviewId={review.id}
+      user={user}
+      upVotes={review.upVotes}
+      downVotes={review.downVotes}
+      addVote={addVote}
+    />
   }
 
   const updateEditable = () => {
@@ -42,7 +51,7 @@ const ReviewTile = ({ review, belongsToUser, patchReview, errors }) => {
         </p>
       </div>
       <p>{review.content}</p>
-      {editingButtons}
+      {buttons}
     </div>
   )
 }

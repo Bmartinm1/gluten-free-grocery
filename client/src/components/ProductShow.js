@@ -91,6 +91,28 @@ const ProductShow = ({ user }) => {
     }
   }
 
+  const addVote = async (voteData) => {
+    try {
+      const response = await fetch(`/api/v1/products/${id}/reviews/vote`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-type': 'application/json'
+        }),
+        body: JSON.stringify(voteData)
+      })
+      if(!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      } else {
+        const body = await response.json()
+        setReviews(body.reviews)
+        setErrors({})
+        return true
+      }
+    } catch (error) {
+      console.error(`Error in fetch ${error.message}`)
+    }
+  }
   useEffect(() => {
     getProduct()
   }, [])
@@ -109,6 +131,7 @@ const ProductShow = ({ user }) => {
               user={user}
               patchReview={patchReview}
               errors={errors}
+              addVote={addVote}
             />
           </div>
           <div className= "cell small-12 medium-4">
