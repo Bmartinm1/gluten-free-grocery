@@ -11,6 +11,8 @@ exports.up = async (knex) => {
     table.integer('rating').notNullable()
     table.string('title')
     table.string('content', 1000)
+    table.integer('upVotes').defaultTo(0)
+    table.integer('downVotes').defaultTo(0)
     table.bigInteger('userId').notNullable().unsigned().index().references('users.id')
     table.bigInteger('productId').notNullable().unsigned().index().references('products.id')
     table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now())

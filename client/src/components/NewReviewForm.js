@@ -32,15 +32,15 @@ const NewReviewForm = ({ addReview, errors }) => {
   }
 
   return (
-    <div className='callout'>
-      <h1>Submit Review</h1>
+    <div className='callout form-container'>
+      <h3>Submit Review</h3>
       <form onSubmit={handleSubmit} className='new-review-form'>
         <ErrorList errors={errors} />
 
-        <label>
+        <label className='form-label'>
           Rating:
           <select 
-            className='drop-down-rating'
+            className='drop-down-rating form-field'
             name='rating'
             onChange={handleInputChange}
             value={newReview.rating}
@@ -54,22 +54,24 @@ const NewReviewForm = ({ addReview, errors }) => {
           </select>
         </label>
 
-        <label>
+        <label className='form-label'>
           Title:
           <input
             type='text'
             name='title'
             onChange={handleInputChange}
             value={newReview.title}
+            className='form-field'
           />
         </label>
 
-        <label>
+        <label className='form-label'>
           Review:
           <textarea
             name='content'
             onChange={handleInputChange}
             value={newReview.content}
+            className="form-field"
           />
         </label>
 

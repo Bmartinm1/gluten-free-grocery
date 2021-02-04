@@ -25,6 +25,12 @@ class Review extends Model {
           type: 'string',
           minLength: 1,
           maxLength: 1000
+        },
+        upVotes: {
+          type: ['integer', 'string']
+        },
+        downVotes: {
+          type: ['integer', 'string']
         }
       }
     }
