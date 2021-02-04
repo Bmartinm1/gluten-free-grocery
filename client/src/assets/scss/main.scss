@@ -2,10 +2,13 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 
+h1 {
+  color:#3A4038;
+}
 .category-tile {
-  color: black;
+  color: #3A4038;
   padding: 20px;
-  border: 2px solid black;
+  border: 2px solid #3A4038;
   margin-bottom: 20px;
   border-radius: 10px;
   background-color: rgb(208, 253, 214);
@@ -24,7 +27,7 @@
 }
 
 .product-tile {
-  border: 2px solid black;
+  border: 2px solid #3A4038;
   border-spacing: 5px;
 }
 
@@ -37,8 +40,9 @@
 }
 
 .product-form-link {
-  border: 2px solid black;
-  background-color: lightgray;
+  border: 2px solid #3A4038;
+  background-color: #94A99E;
+  color: #3A4038;
 }
 
 #tickmarks {
@@ -47,6 +51,40 @@
 
 .new-product-form {
   padding: 20px;
+}
+
+.product-show {
+  background-color: #F2F5F1;
+  color:#3A4038;
+}
+
+.review-list-container {
+  background-color: #3A4038;
+  color: #F2F5F1;
+}
+.form-container {
+  background-color: #94A99E;
+  color:#3A4038;
+}
+.button {
+  background-color: #C0A655;
+}
+
+.form-field {
+  background-color: #F2F5F1;
+  color:#3A4038;
+}
+.form-label {
+  color:#3A4038;
+}
+
+.review-tile {
+  background-color: #F2F5F1;
+  color:#3A4038;
+}
+
+.button:hover {
+  background-color: #8E826D;
 }
 
 #category {
