@@ -33,7 +33,7 @@ const CategoryShowPage = props => {
 
   const productTiles = category.products.map((product) => {
     return (
-      <ProductTile 
+      <ProductTile
         key={product.id}
         product={product}
       />
