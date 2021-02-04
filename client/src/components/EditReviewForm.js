@@ -21,7 +21,7 @@ const EditReviewForm = ({ previousReview, patchReview, updateEditable, errors })
     event.preventDefault()
     if(await patchReview(review)){
       return updateEditable()
-    }
+    } 
   }
 
   return (

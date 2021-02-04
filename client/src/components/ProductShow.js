@@ -9,6 +9,7 @@ const ProductShow = ({ user }) => {
   const [product, setProduct] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState({})
+  
   const { id } = useParams()
 
   const getProduct = async () => {
@@ -90,11 +91,32 @@ const ProductShow = ({ user }) => {
       console.error(`Error in fetch ${error.message}`)
     }
   }
+  
+  const reviewDelete = async (reviewId) => {
+    try {
+      const response = await fetch(`/api/v1/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: new Headers ({
+          "Content-Type": "application/json"
+        })
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      }
+        const body = await response.json()
+        setReviews(body.reviews)
+        setErrors({})
+        return true
+    } catch (error) {
+        console.error(`Error in fetch: ${error.message}`)
+    }
+  }
 
   useEffect(() => {
     getProduct()
   }, [])
-
+  
   return (
     <div className="product-show">
       <div className= "grid-container">
