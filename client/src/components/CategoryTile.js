@@ -6,12 +6,14 @@ const CategoryTile = ({ category }) => {
     <div className="cell">
       <Link to={ `/categories/${category.id}` }>
       <div className="card" id='category-card'>
+      <Link to={ `/categories/${category.id}` }>
         <img src={ category.imgUrl } />
         <div className="card-section">
             <h4>
               { category.name }
             </h4>
         </div>
+      </Link>
       </div>
       </Link>
     </div>

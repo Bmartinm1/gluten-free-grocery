@@ -38,7 +38,7 @@ const ReviewTile = ({ review, belongsToUser, patchReview, reviewDelete, errors }
     )
   }
   return(
-    <div className="callout">
+    <div className="callout review-tile">
       <div className="grid-x">
         <h5 className="cell small-6">
           {review.title || 'Untitled'}

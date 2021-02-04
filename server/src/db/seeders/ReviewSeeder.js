@@ -13,31 +13,41 @@ class ReviewSeeder {
         title: 'Toast it to get the most of it',
         content: 'This bread is unedible unless you toast it and cover it in butter.',
         userId: testUser.id,
-        productId: artisanBread.id
+        productId: artisanBread.id,
+        upVotes: 12,
+        downVotes: 0
       },
       {
         rating: 5,
         title: 'God tier bread',
         content: 'Eating this bread was like bathing in the moon pools of Aphrodites palace.',
         userId: testUser.id,
-        productId: heritageBread.id
+        productId: heritageBread.id,
+        upVotes: 320,
+        downVotes: 1
       },
       {
         rating: 3,
         userId: testUserTwo.id,
-        productId: heritageBread.id
+        productId: heritageBread.id,
+        upVotes: 0,
+        downVotes: 287
       },
       {
         rating: 4,
         title: 'A good classic cereal',
         userId: testUser.id,
-        productId: chexCereal.id
+        productId: chexCereal.id,
+        upVotes: 8,
+        downVotes: 2
       },
       {
         rating: 2,
         content: 'The corn flavor is gross',
         userId: testUserTwo.id,
-        productId: chexCereal.id
+        productId: chexCereal.id,
+        upVotes: 12,
+        downVotes: 1
       }
     ]
 

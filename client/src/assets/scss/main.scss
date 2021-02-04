@@ -2,10 +2,13 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 
+h1 {
+  color: #3a4038;
+}
 .category-tile {
-  color: black;
+  color: #3a4038;
   padding: 20px;
-  border: 2px solid black;
+  border: 2px solid #3a4038;
   margin-bottom: 20px;
   border-radius: 10px;
   background-color: rgb(208, 253, 214);
@@ -24,7 +27,7 @@
 }
 
 .product-tile {
-  border: 2px solid black;
+  border: 2px solid #3a4038;
   border-spacing: 5px;
 }
 
@@ -37,8 +40,9 @@
 }
 
 .product-form-link {
-  border: 2px solid black;
-  background-color: lightgray;
+  border: 2px solid #3a4038;
+  background-color: #94a99e;
+  color: #3a4038;
 }
 
 #tickmarks {
@@ -49,17 +53,42 @@
   padding: 20px;
 }
 
+.product-show {
+  background-color: #f2f5f1;
+  color: #3a4038;
+}
+
+.review-list-container {
+  background-color: #3a4038;
+  color: #f2f5f1;
+}
+.form-container {
+  background-color: #94a99e;
+  color: #3a4038;
+}
+.button {
+  background-color: #c0a655;
+}
+
+.form-field {
+  background-color: #f2f5f1;
+  color: #3a4038;
+}
+.form-label {
+  color: #3a4038;
+}
+
+.review-tile {
+  background-color: #f2f5f1;
+  color: #3a4038;
+}
+
+.button:hover {
+  background-color: #8e826d;
+}
+
 #category {
-  // background-color: tan;
-  // background: url("https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/basket-of-bread.jpg")
-  //   no-repeat center center fixed;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // opacity: 0.3;
   height: 100vh;
-  // width: 100%;
 }
 
 *,

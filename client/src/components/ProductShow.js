@@ -118,24 +118,29 @@ const ProductShow = ({ user }) => {
   }, [])
   
   return (
-    <div className= "grid-container">
-      <div className="product-show text-center">
-        <h2>{product.brandName} {product.productName}</h2>
-        <p>{product.description}</p>
+    <div className="product-show">
+      <div className= "grid-container">
+        <div className="text-center">
+          <h2>{product.brandName} {product.productName}</h2>
+          <p>{product.description}</p>
+        </div>
+        <div className="grid-x grid-margin-x grid-padding-x">
+          <div className= "cell small-12 medium-8">
+            <ReviewList 
+              reviews={reviews}
+              user={user}
+              patchReview={patchReview}
+              errors={errors}
+            />
+          </div>
+          <div className= "cell small-12 medium-4">
+            <NewReviewForm
+              addReview={addReview} 
+              errors={errors}
+            />
+          </div>
+        </div>
       </div>
-
-      <NewReviewForm
-        addReview={addReview} 
-        errors={errors}
-      />
-
-      <ReviewList 
-        reviews={reviews}
-        user={user}
-        patchReview={patchReview}
-        errors={errors}
-        reviewDelete={reviewDelete}
-      />
     </div>
   )
 }

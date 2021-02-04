@@ -20,7 +20,7 @@ const ReviewList = ({reviews, user, patchReview, errors, reviewDelete}) => {
   }) 
 
   return(
-    <div className="callout">
+    <div className="callout review-list-container">
       <h3>Reviews</h3>
       {reviewTiles}
     </div>
