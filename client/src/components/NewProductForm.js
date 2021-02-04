@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import { useParams } from 'react-router'
 
 import ErrorList from './ErrorList'
 import translateServerErrors from '../services/translateServerErrors'
@@ -11,7 +12,7 @@ const NewProductForm = props => {
     description: ''
   })
 
-  const categoryId = props.match.params.categoryId
+  const {categoryId} = useParams()
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [errors, setErrors] = useState({})
 

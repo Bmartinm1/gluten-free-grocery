@@ -38,7 +38,7 @@ const App = (props) => {
         <Route exact path='/user-sessions/new' component={ SignInForm } />
         <AuthenticatedRoute exact path='/products/:id' component={ ProductShow } user={ currentUser }/>
         <Route exact path='/categories/:id' component={ CategoryShowPage } />
-        <Route exact path='/categories/:categoryId/products/new' component={ NewProductForm } />
+        <AuthenticatedRoute exact path='/categories/:categoryId/products/new' component={ NewProductForm } user={currentUser} />
       </Switch>
     </Router>
   );
