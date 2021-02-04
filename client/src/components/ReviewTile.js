@@ -3,18 +3,23 @@ import EditingButtons from './EditingButtons'
 import EditReviewForm from './EditReviewForm'
 import VoteButtons from './VoteButtons'
 
-const ReviewTile = ({ review, user, patchReview, errors, addVote }) => {
+const ReviewTile = ({ review, user, patchReview, errors, addVote, reviewDelete }) => {
   const [editable, setEditable] = useState(false)
   
   const handleEditClick = (event) => {
     event.preventDefault()
     return setEditable(true)
   }
+  const handleDeleteClick = (event) => {
+    event.preventDefault()
+    return reviewDelete(review.id)
+  }
 
   let buttons; 
   if (user.id == review.userId) {
     buttons = <EditingButtons 
         handleEditClick={handleEditClick} 
+        handleDeleteClick={handleDeleteClick}
       />
   } else {
     buttons = <VoteButtons 

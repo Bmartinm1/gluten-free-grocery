@@ -1,7 +1,7 @@
 import React from 'react'
 import ReviewTile from './ReviewTile'
 
-const ReviewList = ({reviews, user, patchReview, errors, addVote}) => {
+const ReviewList = ({reviews, user, patchReview, errors, addVote, reviewDelete}) => {
   const reviewTiles = reviews.map(review => {
     return(
       <ReviewTile 
@@ -11,6 +11,7 @@ const ReviewList = ({reviews, user, patchReview, errors, addVote}) => {
         errors={errors}
         user={user}
         addVote={addVote}
+        reviewDelete={reviewDelete}
       />
     )
   }) 
