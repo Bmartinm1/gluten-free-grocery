@@ -2,7 +2,7 @@ import express from 'express'
 import cleanUserInput from '../../../services/cleanUserInput.js'
 import { ValidationError } from 'objection'
 import ReviewSerializer from '../../../serializers/ReviewSerializer.js'
-import { Product, Review } from '../../../models/index.js'
+import { Review } from '../../../models/index.js'
 import ProductSerializer from "../../../serializers/ProductSerializer.js"
 
 const reviewsRouter = new express.Router()
