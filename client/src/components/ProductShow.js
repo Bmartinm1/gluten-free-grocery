@@ -131,6 +131,7 @@ const ProductShow = ({ user }) => {
               user={user}
               patchReview={patchReview}
               errors={errors}
+              reviewDelete={reviewDelete}
             />
           </div>
           <div className= "cell small-12 medium-4">
