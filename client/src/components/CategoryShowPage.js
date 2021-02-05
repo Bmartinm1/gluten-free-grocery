@@ -40,10 +40,10 @@ const CategoryShowPage = props => {
     )
   })
 
-  
-
   return (
-    <div style={{backgroundImage: `url(${category.backgroundImageUrl}` }} className='grid-container text-center' id='category-show' >
+    <div className='grid-container text-center ' id='category-show' >
+       <img src={`${category.backgroundImageUrl}`} className= 'backgroundImg' />
+      <div className='showpage-content'>
       <h1>{category.name}</h1>
         <div className="grid-x grid-margin-x small-up-2 medium-up-3">
           {productTiles}
@@ -51,7 +51,6 @@ const CategoryShowPage = props => {
         <div className='grid-x grid-margin-x'>
           <div className="small-4 small-offset-4" id='new-product-form-card'>
             <Link to={`/categories/${categoryId}/products/new`}>
-              <img src="assets/img/generic/rectangle-1.jpg" />
               <div className="new-product-link-content">
                 <h4>Can't find what you're looking for?</h4>
                 <p>Submit a request for a new product here!</p>
@@ -59,6 +58,7 @@ const CategoryShowPage = props => {
             </Link>
           </div>
         </div>
+      </div>
     </div>
   )
 }
