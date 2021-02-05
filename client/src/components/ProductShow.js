@@ -9,6 +9,7 @@ const ProductShow = ({ user }) => {
   const [product, setProduct] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState({})
+  
   const { id } = useParams()
 
   const getProduct = async () => {
@@ -90,29 +91,57 @@ const ProductShow = ({ user }) => {
       console.error(`Error in fetch ${error.message}`)
     }
   }
+  
+  const reviewDelete = async (reviewId) => {
+    try {
+      const response = await fetch(`/api/v1/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: new Headers ({
+          "Content-Type": "application/json"
+        })
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      }
+        const body = await response.json()
+        setReviews(body.reviews)
+        setErrors({})
+        return true
+    } catch (error) {
+        console.error(`Error in fetch: ${error.message}`)
+    }
+  }
 
   useEffect(() => {
     getProduct()
   }, [])
-
+  
   return (
-    <div className= "grid-container">
-      <div className="product-show text-center">
-        <h2>{product.brandName} {product.productName}</h2>
-        <p>{product.description}</p>
+    <div className="product-show">
+      <div className= "grid-container">
+        <div className="text-center">
+          <h2>{product.brandName} {product.productName}</h2>
+          <p>{product.description}</p>
+        </div>
+        <div className="grid-x grid-margin-x grid-padding-x">
+          <div className= "cell small-12 medium-8">
+            <ReviewList 
+              reviews={reviews}
+              user={user}
+              patchReview={patchReview}
+              errors={errors}
+              reviewDelete={reviewDelete}
+            />
+          </div>
+          <div className= "cell small-12 medium-4">
+            <NewReviewForm
+              addReview={addReview} 
+              errors={errors}
+            />
+          </div>
+        </div>
       </div>
-
-      <NewReviewForm
-        addReview={addReview} 
-        errors={errors}
-      />
-
-      <ReviewList 
-        reviews={reviews}
-        user={user}
-        patchReview={patchReview}
-        errors={errors}
-      />
     </div>
   )
 }

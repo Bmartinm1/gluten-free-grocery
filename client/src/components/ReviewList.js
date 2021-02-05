@@ -1,7 +1,7 @@
 import React from 'react'
 import ReviewTile from './ReviewTile'
 
-const ReviewList = ({reviews, user, patchReview, errors}) => {
+const ReviewList = ({reviews, user, patchReview, errors, reviewDelete}) => {
   const reviewTiles = reviews.map(review => {
     let belongsToUser = false
     if (user.id == review.userId) {
@@ -14,12 +14,13 @@ const ReviewList = ({reviews, user, patchReview, errors}) => {
         belongsToUser={belongsToUser}
         patchReview={patchReview}
         errors={errors}
+        reviewDelete={reviewDelete}
       />
     )
   }) 
 
   return(
-    <div className="callout">
+    <div className="callout review-list-container">
       <h3>Reviews</h3>
       {reviewTiles}
     </div>
