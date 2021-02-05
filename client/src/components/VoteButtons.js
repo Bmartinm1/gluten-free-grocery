@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
 const VoteButtons = ({review, user, addVote}) => {
-  // const [yesClicked, setYesClicked] = useState(false)
-  // const [noClicked, setNoClicked] = useState(false)
 
   let yesButtonClass = 'hollow button'
   let noButtonClass = 'hollow button'
@@ -16,10 +14,8 @@ const VoteButtons = ({review, user, addVote}) => {
     const voteData = {reviewId: review.id, userId: user.id}
     event.preventDefault()
     if(event.target.id == 'upVote') {
-      // setYesClicked(true)
       voteData.voteType = 'upVote'
     } else if (event.target.id == 'downVote') {
-      // setNoClicked(true)
       voteData.voteType = 'downVote'
     }
     return addVote(voteData)
