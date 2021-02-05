@@ -9,20 +9,20 @@ const CategoryShowPage = props => {
     name: "",
     products: []
   })
-  
+
   const categoryId = props.match.params.id
 
   const getCategory = async () => {
     try {
       const response = await fetch(`/api/v1/categories/${categoryId}`)
-        if (!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
-        }
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw (error)
+      }
       const body = await response.json()
       setCategory(body.category)
-    } catch (error){
+    } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
@@ -41,10 +41,10 @@ const CategoryShowPage = props => {
   })
 
   return (
-    <div className='grid-container text-center ' id='category-show' >
-       <img src={`${category.backgroundImageUrl}`} className= 'backgroundImg' />
+    <div className='grid-container text-center' id='category-show' >
+      <img src={`${category.backgroundImageUrl}`} className='backgroundImg' />
       <div className='showpage-content'>
-      <h1>{category.name}</h1>
+        <h1>{category.name}</h1>
         <div className="grid-x grid-margin-x small-up-2 medium-up-3">
           {productTiles}
         </div>

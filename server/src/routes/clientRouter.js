@@ -5,6 +5,7 @@ const router = new express.Router();
 
 const clientRoutes = [
   "/",
+  "/categories",
   "/user-sessions/new", 
   "/users/new", 
   "/categories/:id", 

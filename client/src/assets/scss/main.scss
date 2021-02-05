@@ -31,6 +31,14 @@ h1 {
   border-spacing: 5px;
 }
 
+#product-card {
+  border: 1px solid #c0a655;
+  border-radius: 10px;
+}
+#product-card:hover {
+  box-shadow: 5px 3px rgb(201, 201, 201);
+}
+
 .category-show {
   padding: 20px;
 }
@@ -120,4 +128,43 @@ h1 {
   float: inline-start;
   position: relative;
   z-index: 1;
+}
+
+.landing-header {
+  margin: 30px;
+  color: #3a4038;
+}
+.landing-page {
+  background-image: url(https://gluten-free-grocery-imgs.s3.us-east-2.amazonaws.com/glutenFreeBackground1920x1080opacity15.jpg);
+  height: 100vh;
+  margin: -30px 0px 0px 0px;
+  padding: 0px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+ .landing-link {
+  margin: 40px;
+  padding: 10px;
+  color: #f2f5f1;
+  background-color: #c0a655;
+ }
+
+ .landing-link:hover {
+  color: #f2f5f1;
+  background-color: #8e826d;
+ }
+.landing-callout {
+  border: 2px solid #c0a655;
+  color: #3a4038;
+  border-radius: 10px;
+  box-shadow: 5px 3px rgb(201, 201, 201);
+}
+.new-product-link-content {
+  color: #f2f5f1;
+  background-color: #94a99e;
+  border-radius: 10px;
+}
+.new-product-link-content:hover {
+  box-shadow: 5px 3px rgb(201, 201, 201);
 }
