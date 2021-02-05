@@ -1,19 +1,16 @@
 import React from 'react'
 import ReviewTile from './ReviewTile'
 
-const ReviewList = ({reviews, user, patchReview, errors, reviewDelete}) => {
+const ReviewList = ({reviews, user, patchReview, errors, addVote, reviewDelete}) => {
   const reviewTiles = reviews.map(review => {
-    let belongsToUser = false
-    if (user.id == review.userId) {
-      belongsToUser = true
-    }
     return(
       <ReviewTile 
         key={review.id}
         review={review}
-        belongsToUser={belongsToUser}
         patchReview={patchReview}
         errors={errors}
+        user={user}
+        addVote={addVote}
         reviewDelete={reviewDelete}
       />
     )

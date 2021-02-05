@@ -14,7 +14,7 @@ const ProductShow = ({ user }) => {
 
   const getProduct = async () => {
     try {
-      const response = await fetch(`/api/v1/products/${id}`)
+      const response = await fetch(`/api/v1/products/${id}?userId=${user.id}`)
 
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
@@ -24,6 +24,7 @@ const ProductShow = ({ user }) => {
       setProduct(body.product)
       setReviews(body.product.reviews)
     } catch (error) {
+      console.error(error)
       console.error(`Error in fetch ${error.message}`)
     }
   }
@@ -113,6 +114,27 @@ const ProductShow = ({ user }) => {
     }
   }
 
+  const addVote = async (voteData) => {
+    try {
+      const response = await fetch(`/api/v1/reviews/vote`, {
+        method: 'PUT',
+        headers: new Headers({
+          'Content-type': 'application/json'
+        }),
+        body: JSON.stringify(voteData)
+      })
+      if(!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      } else {
+        const body = await response.json()
+        setReviews(body.reviews)
+        return true
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   useEffect(() => {
     getProduct()
   }, [])
@@ -131,6 +153,7 @@ const ProductShow = ({ user }) => {
               user={user}
               patchReview={patchReview}
               errors={errors}
+              addVote={addVote}
               reviewDelete={reviewDelete}
             />
           </div>

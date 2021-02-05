@@ -1,7 +1,7 @@
 import ReviewSerializer from './ReviewSerializer.js'
 
 class ProductSerializer {
-  static async getDetails(product) {
+  static async getDetails(product, currentUserId) {
     const allowedAttributes = ['id', 'productName', 'brandName', 'description', 'categoryId']
     const serializedProduct = {}
 
@@ -10,9 +10,9 @@ class ProductSerializer {
     }
 
     serializedProduct.reviews = await product.$relatedQuery('reviews')
-    serializedProduct.reviews = serializedProduct.reviews.map(review => {
-      return ReviewSerializer.getSummary(review)
-    })
+    serializedProduct.reviews = await Promise.all(serializedProduct.reviews.map(review => {
+      return ReviewSerializer.getDetails(review, currentUserId)
+    }))
     return serializedProduct
   }
 }
