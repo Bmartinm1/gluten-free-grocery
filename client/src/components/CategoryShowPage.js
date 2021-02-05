@@ -43,7 +43,7 @@ const CategoryShowPage = props => {
   
 
   return (
-    <div className='grid-container text-center' id='category-show' >
+    <div style={{backgroundImage: `url(${category.backgroundImageUrl}` }} className='grid-container text-center' id='category-show' >
       <h1>{category.name}</h1>
         <div className="grid-x grid-margin-x small-up-2 medium-up-3">
           {productTiles}
