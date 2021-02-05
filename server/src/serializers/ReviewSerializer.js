@@ -10,7 +10,7 @@ class ReviewSerializer {
     return serializedReview
   }
 
-  static async getDetails(review) {
+  static async getDetails(review, currentUserId) {
     const serializedReview = this.getSummary(review)
     const votes = await review.$relatedQuery('votes')
     const upVotes = votes.filter(vote => {
@@ -19,7 +19,15 @@ class ReviewSerializer {
     const downVotes = votes.filter(vote => {
       return vote.voteType === 'downVote'
     })
-
+    const userVoteData = votes.find( vote => {
+      return vote.userId == currentUserId
+    })
+    
+    if (!userVoteData) {
+      serializedReview.userVote = null
+    } else {
+      serializedReview.userVote = userVoteData.voteType
+    }
     serializedReview.upVotes = upVotes.length
     serializedReview.downVotes = downVotes.length
 

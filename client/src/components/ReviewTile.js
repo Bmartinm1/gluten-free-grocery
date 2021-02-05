@@ -23,10 +23,8 @@ const ReviewTile = ({ review, user, patchReview, errors, addVote, reviewDelete }
       />
   } else {
     buttons = <VoteButtons 
-      reviewId={review.id}
+      review={review}
       user={user}
-      upVotes={review.upVotes}
-      downVotes={review.downVotes}
       addVote={addVote}
     />
   }

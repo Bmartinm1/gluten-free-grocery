@@ -14,7 +14,7 @@ const ProductShow = ({ user }) => {
 
   const getProduct = async () => {
     try {
-      const response = await fetch(`/api/v1/products/${id}`)
+      const response = await fetch(`/api/v1/products/${id}?userId=${user.id}`)
 
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
@@ -24,6 +24,7 @@ const ProductShow = ({ user }) => {
       setProduct(body.product)
       setReviews(body.product.reviews)
     } catch (error) {
+      console.error(error)
       console.error(`Error in fetch ${error.message}`)
     }
   }
@@ -115,8 +116,8 @@ const ProductShow = ({ user }) => {
 
   const addVote = async (voteData) => {
     try {
-      const response = await fetch(`/api/v1/products/${id}/reviews/vote`, {
-        method: 'POST',
+      const response = await fetch(`/api/v1/reviews/vote`, {
+        method: 'PUT',
         headers: new Headers({
           'Content-type': 'application/json'
         }),
@@ -128,11 +129,10 @@ const ProductShow = ({ user }) => {
       } else {
         const body = await response.json()
         setReviews(body.reviews)
-        setErrors({})
         return true
       }
     } catch (error) {
-      console.error(`Error in fetch ${error.message}`)
+      console.error(error)
     }
   }
   useEffect(() => {

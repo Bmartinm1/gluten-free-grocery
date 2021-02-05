@@ -1,33 +1,28 @@
 import React, { useState } from 'react'
 
-const VoteButtons = ({upVotes, downVotes, reviewId, user, addVote}) => {
-  const [yesClicked, setYesClicked] = useState(false)
-  const [noClicked, setNoClicked] = useState(false)
+const VoteButtons = ({review, user, addVote}) => {
+  // const [yesClicked, setYesClicked] = useState(false)
+  // const [noClicked, setNoClicked] = useState(false)
 
   let yesButtonClass = 'hollow button'
   let noButtonClass = 'hollow button'
-    if (yesClicked) {
-      yesButtonClass = 'button disabled'
-      noButtonClass += ' disabled'
-    } else if (noClicked) {
-      noButtonClass = 'button disabled'
-      yesButtonClass += ' disabled'
+    if (review.userVote == 'upVote') {
+      yesButtonClass = 'button'
+    } else if (review.userVote == 'downVote') {
+      noButtonClass = 'button'
     }
 
   const handleVoteClick = (event) => {
-    const voteData = {reviewId, userId: user.id}
+    const voteData = {reviewId: review.id, userId: user.id}
     event.preventDefault()
-    if(event.target.id === "upVote") {
-      setYesClicked(true)
+    if(event.target.id == 'upVote') {
+      // setYesClicked(true)
       voteData.voteType = 'upVote'
-    } else if (event.target.id === 'downVote') {
-      setNoClicked(true)
+    } else if (event.target.id == 'downVote') {
+      // setNoClicked(true)
       voteData.voteType = 'downVote'
     }
-    if(!addVote(voteData)) {
-      setYesClicked(false)
-      setNoClicked(false)
-    } 
+    return addVote(voteData)
   }
 
   return (
@@ -36,8 +31,8 @@ const VoteButtons = ({upVotes, downVotes, reviewId, user, addVote}) => {
         <p>Was this review helpful?</p>
       </div>
       <div className='button-group tiny cell small-8'>
-        <button className={yesButtonClass} onClick={handleVoteClick}  id='upVote'>{`Yes (${upVotes})`}</button>
-        <button className={noButtonClass} onClick={handleVoteClick} id='downVote'>{`No (${downVotes})`}</button>
+        <button className={yesButtonClass} onClick={handleVoteClick}  id='upVote'>{`Yes (${review.upVotes})`}</button>
+        <button className={noButtonClass} onClick={handleVoteClick} id='downVote'>{`No (${review.downVotes})`}</button>
       </div>
     </div>
   )

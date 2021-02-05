@@ -13,7 +13,7 @@ productReviewsRouter.post('/', async (req, res) => {
 
   try {
     const newReview = await Review.query().insertAndFetch({ ...cleanBody, productId })
-    const serializedReview = await ReviewSerializer.getDetails(newReview)
+    const serializedReview = await ReviewSerializer.getDetails(newReview, newReview.userId)
     return res.status(201).json({ review: serializedReview })
   } catch (error){
     if (error instanceof ValidationError){
@@ -29,14 +29,17 @@ productReviewsRouter.patch('/', async (req, res) => {
   const cleanBody = cleanUserInput(body)
   try {
     await Review.query().findById(cleanBody.id).update(cleanBody)
+    const review = await Review.query().findById(cleanBody.id)
+    const userId = review.userId
     const product = await Product.query().findById(productId)
     const reviews = await product.$relatedQuery('reviews')
-    const serializedReviews = await Promise.all(reviews.map(review => ReviewSerializer.getDetails(review)))
+    const serializedReviews = await Promise.all(reviews.map(review => ReviewSerializer.getDetails(review, userId)))
     return res.status(201).json({reviews: serializedReviews})
   } catch (error) {
     if (error instanceof ValidationError){
       return res.status(422).json({ errors: error.data })
     }
+    console.error(error)
     return res.status(500).json({ errors: error })
   }
 })
