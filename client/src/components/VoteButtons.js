@@ -27,10 +27,10 @@ const VoteButtons = ({review, user, addVote}) => {
 
   return (
     <div className='grid-x'>
-      <div className='cell small-4'>
+      <div className='cell small-12 medium-4'>
         <p>Was this review helpful?</p>
       </div>
-      <div className='button-group tiny cell small-8'>
+      <div className='button-group tiny cell small-12 medium-8'>
         <button className={yesButtonClass} onClick={handleVoteClick}  id='upVote'>{`Yes (${review.upVotes})`}</button>
         <button className={noButtonClass} onClick={handleVoteClick} id='downVote'>{`No (${review.downVotes})`}</button>
       </div>

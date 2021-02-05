@@ -12,6 +12,7 @@ import ProductShow from './ProductShow';
 import CategoryShowPage from './CategoryShowPage';
 import NewProductForm from './NewProductForm';
 import AuthenticatedRoute from './authentication/AuthenticatedRoute';
+import LandingPage from './LandingPage'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -33,7 +34,8 @@ const App = (props) => {
     <Router>
       <TopBar user={ currentUser } />
       <Switch>
-        <Route exact path='/' component={ CategoryIndex } />
+        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/categories' component={ CategoryIndex } />
         <Route exact path='/users/new' component={ RegistrationForm } />
         <Route exact path='/user-sessions/new' component={ SignInForm } />
         <AuthenticatedRoute exact path='/products/:id' component={ ProductShow } user={ currentUser }/>
