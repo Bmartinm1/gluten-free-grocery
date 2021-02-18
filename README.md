@@ -3,7 +3,7 @@
 ### Authors: Meaghan Provencher, Rich May, Mike Collins, and Ben MartinMooney
 
 [Link to heroku app](https://gluten-free-grocery.herokuapp.com/)
-Site will provide a platform for users to search through gluten free products with associated reviews and the locations where said product(s) can be purchased. Our app will offer resources and tools for those that with celiac disease or gluten sensitivity. Making daily life easier for folks who struggle with what products to purchase for themselves and their families.
+Site will provide a platform for users to search through gluten free products with associated reviews and the locations where said product(s) can be purchased. Our app will offer resources and tools for those with celiac disease or gluten sensitivity. Making daily life easier for folks who struggle with what products to purchase for themselves and their families.
 
 ### Site Features
 
